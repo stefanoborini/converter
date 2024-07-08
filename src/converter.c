@@ -6,12 +6,18 @@ int main(int argc, char *argv[]) {
     if (argc < 2) {
         return 1;
     }
-    double high;
+    double low, high;
+    double conversion_rate;
 
-    sscanf(argv[1], "%lf", &high);
+    if (!strncmp(argv[1], "uniform", strlen("uniform"))) {
+        sscanf(argv[2], "%lf", &low);
+        sscanf(argv[3], "%lf", &high);
 
-    double value1 = UxHwDoubleUniformDist(0.5, high);
-    double value2 = UxHwDoubleUniformDist(0.5, high);
-    printf("%g\n", value1 + value2);
+        conversion_rate = UxHwDoubleUniformDist(low, high);
+    } else {
+        printf("Unrecognised distribution");
+        return 1;
+    }
+    printf("%g\n", conversion_rate);
     return 0;
 }
