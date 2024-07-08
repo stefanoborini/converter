@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    printf("100\n");
+    double value = 100.0;
+    printf("%g\n", value);
     return 0;
 }
