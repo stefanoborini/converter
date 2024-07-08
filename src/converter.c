@@ -4,11 +4,11 @@
 
 int main() {
     srand(time(0));
-    double value = (rand() % 100 / 100.0);
-    printf("%g\n", value);
-    value = (rand() % 100 / 100.0);
-    printf("%g\n", value);
-    value = (rand() % 100 / 100.0);
-    printf("%g\n", value);
+    double value = 0.0;
+
+    for (int i = 0; i < 5; i++) {
+        value = (rand() % 100 / 100.0);
+        printf("%g\n", value);
+    }
     return 0;
 }
