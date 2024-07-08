@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
     }
     double high;
 
-    sscanf(argv[1], "%f", &high);
+    sscanf(argv[1], "%g", &high);
 
     double value1 = UxHwDoubleUniformDist(0.5, high);
     double value2 = UxHwDoubleUniformDist(0.5, high);
