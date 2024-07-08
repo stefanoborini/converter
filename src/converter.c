@@ -5,13 +5,17 @@
 
 
 int main(int argc, char *argv[]) {
-    if (argc < 2) {
-        return 1;
-    }
+    /* Converts a specified monetary amount in another according to a
+       conversion rate specified with a given statistical distribution
+       */
     double low, high, mu, sigma;
     double conversion_rate;
-
     double amount;
+
+    if (argc < 5) {
+        printf("Usage: %s amount distribution param1 param2", argv[0]);
+        return 1;
+    }
 
     sscanf(argv[1], "%lf", &amount);
 
@@ -26,9 +30,12 @@ int main(int argc, char *argv[]) {
 
         conversion_rate = UxHwDoubleGaussDist(mu, sigma);
     } else {
-        printf("Unrecognised distribution");
+        printf("Unrecognised distribution specified");
         return 1;
     }
-    printf("%g\n", amount * conversion_rate);
+    printf(
+        "Amount: %g. Conversion Rate: %g. Converted amount: %g\n",
+        amount, conversion_rate, amount * conversion_rate
+    );
     return 0;
 }
