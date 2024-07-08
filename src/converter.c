@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
     if (argc < 2) {
         return 1;
     }
-    double low, high;
+    double low, high, mu, sigma;
     double conversion_rate;
 
     if (!strncmp(argv[1], "uniform", strlen("uniform"))) {
@@ -16,6 +16,11 @@ int main(int argc, char *argv[]) {
         sscanf(argv[3], "%lf", &high);
 
         conversion_rate = UxHwDoubleUniformDist(low, high);
+    } else if (!strncmp(argv[1], "gaussian", strlen("gaussian"))) {
+        sscanf(argv[2], "%lf", &mu);
+        sscanf(argv[3], "%lf", &sigma);
+
+        conversion_rate = UxHwDoubleGaussDist(mu, sigma);
     } else {
         printf("Unrecognised distribution");
         return 1;
