@@ -11,20 +11,24 @@ int main(int argc, char *argv[]) {
     double low, high, mu, sigma;
     double conversion_rate;
 
-    if (!strncmp(argv[1], "uniform", strlen("uniform"))) {
-        sscanf(argv[2], "%lf", &low);
-        sscanf(argv[3], "%lf", &high);
+    double amount;
+
+    sscanf(argv[1], "%lf", &amount);
+
+    if (!strncmp(argv[2], "uniform", strlen("uniform"))) {
+        sscanf(argv[3], "%lf", &low);
+        sscanf(argv[4], "%lf", &high);
 
         conversion_rate = UxHwDoubleUniformDist(low, high);
-    } else if (!strncmp(argv[1], "gaussian", strlen("gaussian"))) {
-        sscanf(argv[2], "%lf", &mu);
-        sscanf(argv[3], "%lf", &sigma);
+    } else if (!strncmp(argv[2], "gaussian", strlen("gaussian"))) {
+        sscanf(argv[3], "%lf", &mu);
+        sscanf(argv[4], "%lf", &sigma);
 
         conversion_rate = UxHwDoubleGaussDist(mu, sigma);
     } else {
         printf("Unrecognised distribution");
         return 1;
     }
-    printf("%g\n", conversion_rate);
+    printf("%g\n", amount * conversion_rate);
     return 0;
 }
